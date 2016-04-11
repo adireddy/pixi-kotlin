@@ -1,7 +1,8 @@
 package pixi.display
 
-import pixi.textures.Texture
-import pixi.utils.Event
+import org.w3c.dom.events.Event
+import pixi.core.sprites.Sprite
+import pixi.core.textures.Texture
 
 /**
  * A MovieClip is a simple way to display an animation depicted by a list of textures.

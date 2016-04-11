@@ -1,6 +1,7 @@
 package pixi.loaders
 
-import pixi.utils.EventTarget
+import pixi.core.interaction.EventEmitter
+
 
 /**
  * A Class that loads a bunch of images / sprite sheet / bitmap font files. Once the
@@ -19,7 +20,7 @@ public class AssetLoader(
         public val assetURLs: Array<String>,
 
         /** Whether requests should be treated as crossorigin */
-        public val crossorigin: Boolean = false) : EventTarget() {
+        public val crossorigin: Boolean = false) : EventEmitter() {
     /**
      * Starts loading the assets sequentially
      */

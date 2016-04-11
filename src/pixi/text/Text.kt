@@ -1,7 +1,7 @@
 package pixi.text
 
 import pixi.TextStyle
-import pixi.display.Sprite
+import pixi.core.sprites.Sprite
 
 @native("PIXI.Text")
 public class Text(text: String, style: TextStyle = noImpl) : Sprite(noImpl) {

@@ -1,27 +1,33 @@
-package pixi.textures
+package pixi.core.textures
 
 import org.w3c.dom.HTMLCanvasElement
+import pixi.core.interaction.EventEmitter
 import pixi.geom.Rectangle
-import pixi.utils.EventTarget
 
 @native("PIXI.Texture")
 /**
  * A texture stores the information that represents an image or part of an image. It cannot be added
- * to the display list directly. Instead use it as the texture for a PIXI.Sprite. If no frame is provided then the whole image is used.
+ * to the display list directly. Instead use it as the texture for a Sprite. If no frame is provided then the whole image is used.
+ *
+ * You can directly create a texture from an image and then reuse it multiple times like this :
+ *
+ * ```js
+ * 	var texture = PIXI.Texture.fromImage('assets/image.png');
+ * 	var sprite1 = new PIXI.Sprite(texture);
+ * 	var sprite2 = new PIXI.Sprite(texture);
+ * ```
+ *
+ * @class
+ * @mixes eventTarget
+ * @memberof PIXI
+ * @param baseTexture {BaseTexture} The base texture source to create the texture from
+ * @param [frame] {Rectangle} The rectangle frame of the texture to show
+ * @param [crop] {Rectangle} The area of original texture
+ * @param [trim] {Rectangle} Trimmed texture rectangle
+ * @param [rotate] {boolean} indicates whether the texture should be rotated by 90 degrees ( used by texture packer )
  */
-open public class Texture(
-    /** The base texture source to create the texture from */
-    open public var baseTexture: BaseTexture,
-
-    /** The rectangle frame of the texture to show */
-    open public var frame: Rectangle,
-
-    /** The area of original texture */
-    open public var crop: Rectangle = noImpl,
-
-    /** Trimmed texture rectangle */
-    public var trim: Rectangle = noImpl
-) : EventTarget() {
+open public class Texture(open public var baseTexture: BaseTexture, open public var frame: Rectangle, open public var crop: Rectangle = noImpl
+                          , public var trim: Rectangle = noImpl, public var rotate: Rectangle = noImpl) : EventEmitter() {
 
     /** Does this Texture have any frame data assigned to it? */
     public var noFrame: Boolean = noImpl

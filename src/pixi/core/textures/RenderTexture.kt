@@ -1,10 +1,9 @@
-package pixi.textures
+package pixi.core.textures
 
 import org.w3c.dom.HTMLCanvasElement
 import org.w3c.dom.ImageData
-import pixi.display.Stage
-import pixi.renderers.Renderer
-import pixi.PIXI
+import pixi.core.renderers.Renderer
+import pixi.core.PIXI
 import pixi.geom.Rectangle
 
 @native("PIXI.RenderTexture")
@@ -32,19 +31,19 @@ import pixi.geom.Rectangle
  *
  */
 public class RenderTexture(
-    /** The width of the render texture */
+        /** The width of the render texture */
     public override var width: Int = 100,
 
-    /** The height of the render texture */
+        /** The height of the render texture */
     public override var height: Int = 100,
 
-    /** The renderer used for this RenderTexture. A RenderTexture can only belong to one renderer at the moment if its webGL. */
+        /** The renderer used for this RenderTexture. A RenderTexture can only belong to one renderer at the moment if its webGL. */
     public var renderer: Renderer = noImpl,
 
-    /** See {{#crossLink "PIXI/scaleModes:property"}}PIXI.scaleModes{{/crossLink}} for possible values */
-    scaleMode: Int = PIXI.scaleModes.DEFAULT,
+        /** See {{#crossLink "PIXI/scaleModes:property"}}PIXI.scaleModes{{/crossLink}} for possible values */
+    scaleMode: Int = PIXI.SCALE_MODES.DEFAULT,
 
-    /** The resolution of the texture being generated */
+        /** The resolution of the texture being generated */
     public var resolution: Float = 1f
 ) : Texture(noImpl, noImpl) {
     /** The framing rectangle of the render texture */
@@ -90,5 +89,5 @@ public class RenderTexture(
      */
     public fun getCanvas(): HTMLCanvasElement = noImpl
 
-    public fun render(stage: Stage, clear: Boolean): Unit = noImpl
+    //public fun render(stage: Stage, clear: Boolean): Unit = noImpl
 }

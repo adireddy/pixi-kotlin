@@ -1,9 +1,9 @@
 package pixi.extras
 
-import pixi.display.DisplayObjectContainer
+import pixi.core.display.Container
 
 @native("PIXI.Spine")
-public class Spine(val url: String) : DisplayObjectContainer() {
+public class Spine(val url: String) : Container() {
     // TODO Add the rest of the interface
     companion object {
         class SkeletonData {}

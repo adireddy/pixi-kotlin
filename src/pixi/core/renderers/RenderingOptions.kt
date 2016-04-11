@@ -1,9 +1,12 @@
-package pixi.renderers
+package pixi.core.renderers
 
 import org.w3c.dom.HTMLCanvasElement
 
 @native("Object")
-open public class RendererOptions {
+open public class RenderingOptions {
+
+    var backgroundColor: Int = noImpl
+
     /**
      * the canvas to use as a view, optional
      */
@@ -13,6 +16,8 @@ open public class RendererOptions {
      * If the render view is transparent, default false
      */
     var transparent: Boolean = false
+
+    var autoResize: Boolean = false
 
     /**
      * sets antialias (only applicable in chrome at the moment)
@@ -36,4 +41,8 @@ open public class RendererOptions {
      * Disable this by setting this to false. For example: if your game has a canvas filling background image, you often don't need this set.
      */
     var clearBeforeRender: Boolean = false
+
+    var forceFXAA: Boolean = false
+
+    var roundPixels: Boolean = false
 }

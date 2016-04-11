@@ -1,9 +1,9 @@
 package pixi.primitives
 
-import pixi.display.DisplayObjectContainer
-import pixi.PIXI
-import pixi.geom.Point
-import pixi.textures.Texture
+import pixi.core.display.Container
+import pixi.core.PIXI
+import pixi.core.math.Point
+import pixi.core.textures.Texture
 import pixi.geom.Rectangle
 import pixi.geom.Shape
 
@@ -11,7 +11,7 @@ import pixi.geom.Shape
 /**
  * The Graphics class contains methods used to draw primitive shapes such as lines, circles and rectangles to the display, and color and fill them.
  */
-public class Graphics: DisplayObjectContainer() {
+public class Graphics: Container() {
     /** The alpha value used when filling the Graphics object. */
     public var fillAlpha: Number = 1.0
 
@@ -25,7 +25,7 @@ public class Graphics: DisplayObjectContainer() {
     public var tint: Number = 0xFFFFFF
 
     /** The blend mode to be applied to the graphic shape. Apply a value of PIXI.blendModes.NORMAL to reset the blend mode. */
-    public var blendMode: Number = PIXI.blendModes.NORMAL
+    public var blendMode: Number = PIXI.BLEND_MODES.NORMAL
 
     /** Whether this shape is being used as a mask. */
     public var isMask: Boolean = false
@@ -185,7 +185,7 @@ public class Graphics: DisplayObjectContainer() {
      * @method getBounds
      * @return the rectangular bounding area
      */
-    override public fun getBounds(): Rectangle = noImpl
+    public fun getBounds(): Rectangle = noImpl
 
     /**
      * Update the bounds of the object

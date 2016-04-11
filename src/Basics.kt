@@ -1,19 +1,21 @@
-import pixi.display.Sprite
-import pixi.display.Stage
-import pixi.requestAnimFrame
-import pixi.textures.Texture
-import kotlin.browser.*
-
-import pixi.utils.autoDetectRenderer
+import pixi.core.PIXI
+import pixi.core.display.Container
+import pixi.core.renderers.RenderingOptions
+import pixi.core.sprites.Sprite
+import pixi.core.textures.Texture
+import kotlin.browser.document
+import kotlin.browser.window
 
 
 fun main(args: Array<String>) {
+    var options: RenderingOptions = RenderingOptions();
+    options.backgroundColor = 0x003366;
+    options.resolution = 1;
 
-    // create an new instance of a pixi stage
-    val stage = Stage(0x66FF99)
+    var stage = Container();
 
     // create a renderer instance
-    val renderer = autoDetectRenderer(400, 300)
+    val renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, options)
 
     // add the renderer view element to the DOM
     document.body!!.appendChild(renderer.view)
@@ -34,8 +36,8 @@ fun main(args: Array<String>) {
 
     stage.addChild(bunny)
 
-    fun animate() {
-        requestAnimFrame(::animate)
+    fun animate(v: Double) {
+        window.requestAnimationFrame(::animate)
 
         // just for fun, let's rotate mr rabbit a little
         bunny.rotation += 0.1
@@ -44,5 +46,5 @@ fun main(args: Array<String>) {
         renderer.render(stage)
     }
 
-    requestAnimFrame(::animate)
+    window.requestAnimationFrame(::animate)
 }

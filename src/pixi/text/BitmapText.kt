@@ -1,6 +1,6 @@
 package pixi.text
 
-import pixi.display.DisplayObjectContainer
+import pixi.core.display.Container
 
 /**
  * A BitmapText object will create a line or multiple lines of text using bitmap font. To split a line you can use '\n', '\r' or '\r\n' in your string.
@@ -15,7 +15,7 @@ public class BitmapText(
 
         /** The style parameters */
         style: BitmapTextStyle
-) : DisplayObjectContainer() {
+) : Container() {
 
     /**
      * The width of the overall text, different from fontSize,

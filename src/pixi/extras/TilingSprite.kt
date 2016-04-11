@@ -1,8 +1,8 @@
 package pixi.extras
 
-import pixi.textures.Texture
-import pixi.geom.Point
-import pixi.display.Sprite
+import pixi.core.textures.Texture
+import pixi.core.math.Point
+import pixi.core.sprites.Sprite
 import pixi.geom.Rectangle
 
 /**
@@ -50,5 +50,5 @@ open public class TilingSprite(
      * Returns the framing rectangle of the sprite as a PIXI.Rectangle object
      * @return the framing rectangle
      */
-    override public fun getBounds(): Rectangle
+    public fun getBounds(): Rectangle
 }

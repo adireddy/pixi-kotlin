@@ -2,16 +2,20 @@
   'use strict';
   var _ = Kotlin.defineRootPackage(null, /** @lends _ */ {
     main_kand9s$animate: function (bunny, renderer, stage) {
-      return function animate() {
-        requestAnimFrame(animate);
+      return function animate(v) {
+        window.requestAnimationFrame(animate);
         bunny.rotation = bunny.rotation + 0.1;
-        renderer.render(stage);
+        renderer.render(stage.v);
       };
     },
     main_kand9s$: function (args) {
       var tmp$0;
-      var stage = new PIXI.Stage(6750105);
-      var renderer = PIXI.autoDetectRenderer(400, 300);
+      window.scrollbars.visible = false;
+      var options = new Object();
+      options.backgroundColor = 13158;
+      options.resolution = 1;
+      var stage = {v: new PIXI.Container()};
+      var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, options);
       ((tmp$0 = document.body) != null ? tmp$0 : Kotlin.throwNPE()).appendChild(renderer.view);
       var texture = PIXI.Texture.fromImage('assets/basics/bunny.png');
       var bunny = new PIXI.Sprite(texture);
@@ -19,9 +23,9 @@
       bunny.anchor.y = 0.5;
       bunny.position.x = 200.0;
       bunny.position.y = 150.0;
-      stage.addChild(bunny);
+      stage.v.addChild(bunny);
       var animate = _.main_kand9s$animate(bunny, renderer, stage);
-      requestAnimFrame(animate);
+      window.requestAnimationFrame(animate);
     },
     pixi: Kotlin.definePackage(null, /** @lends _.pixi */ {
       geom: Kotlin.definePackage(null, /** @lends _.pixi.geom */ {
@@ -31,29 +35,9 @@
       primitives: Kotlin.definePackage(null, /** @lends _.pixi.primitives */ {
         GraphicsData: Kotlin.createClass(null, null)
       }),
-      renderers: Kotlin.definePackage(null, /** @lends _.pixi.renderers */ {
-        Renderer: Kotlin.createClass(null, function (width, height, options) {
-          if (width === void 0)
-            width = 0;
-          if (height === void 0)
-            height = 0;
-          if (options === void 0)
-            options = new Object();
-          this.width = width;
-          this.height = height;
-          this.type = PIXI.WEBGL_RENDERER;
-          this.resolution = options.resolution;
-          this.transparent = options.transparent;
-          this.preserveDrawingBuffer = options.preserveDrawingBuffer;
-          this.clearBeforeRender = options.clearBeforeRender;
-          this.view = options.view;
-        }, /** @lends _.pixi.renderers.Renderer.prototype */ {
-          render: function (stage) {
-            noImpl;
-          },
-          resize: function (width, height) {
-            noImpl;
-          }
+      core: Kotlin.definePackage(null, /** @lends _.pixi.core */ {
+        interaction: Kotlin.definePackage(null, /** @lends _.pixi.core.interaction */ {
+          EventEmitter: Kotlin.createClass(null, null)
         })
       })
     })
